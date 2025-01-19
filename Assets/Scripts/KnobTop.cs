@@ -7,20 +7,28 @@ public class KnobTop : MonoBehaviour
     public Knob myKnob;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.position.y > transform.position.y + 0.1f) 
+        if (collision.gameObject.GetComponent<PlayerScoreArea>() != null)
         {
-            Hat thisHat = collision.gameObject.GetComponent<Hat>();
-            if (thisHat != null)
+            collision.gameObject.GetComponent<PlayerScoreArea>().ScorePoints(myKnob);
+        }
+        else 
+        {
+            if (collision.transform.position.y > transform.position.y + 0.1f)
             {
-                if (thisHat.myKnob == null)
+                Hat thisHat = collision.gameObject.GetComponent<Hat>();
+                if (thisHat != null)
                 {
-                    myKnob.AddHat(thisHat);
-                }
-                else if (thisHat.myKnob.myPlayer != myKnob.myPlayer)
-                {
-                    myKnob.AddHat(thisHat);
+                    if (thisHat.myKnob == null)
+                    {
+                        myKnob.AddHat(thisHat);
+                    }
+                    else if (thisHat.myKnob.myPlayer != myKnob.myPlayer)
+                    {
+                        myKnob.AddHat(thisHat);
+                    }
                 }
             }
         }
+
     }
 }

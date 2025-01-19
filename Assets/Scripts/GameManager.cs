@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum State {Start, Game, P1Won, P2Won}
+    public enum State { Start, Game, P1Won, P2Won }
     public State gameState;
     public static GameManager instance;
 
@@ -42,5 +42,17 @@ public class GameManager : MonoBehaviour
     {
         Player1Score = 0;
         Player2Score = 0;
+    }
+
+    public void PlayerScores(Player thisPlayer, int addedScore) 
+    {
+        if (thisPlayer == Player1)
+        {
+            Player1Score += addedScore;
+        }
+        else 
+        {
+            Player2Score += addedScore;
+        }
     }
 }

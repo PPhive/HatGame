@@ -7,6 +7,7 @@ TagManager:
   - Hat
   - Player1
   - Player2
+  - ScoreZone
   layers:
   - Default
   - TransparentFX

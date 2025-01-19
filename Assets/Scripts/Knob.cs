@@ -96,18 +96,28 @@ public class Knob : MonoBehaviour
         {
             if (hats[i] == bottomHatLost) 
             {
-                try
-                {
-                    hats.RemoveRange(i, hats.Count - 1);
-                    Debug.Log(i + "and above has been removed from " + myPlayer.gameObject.name);
-                }
-                catch 
-                {
-                    Debug.Log("Tried to remove " + i + " while there are only " + hats.Count);
-                }
+                hats.RemoveRange(i, hats.Count - i);
+                Debug.Log(i + " and above has been removed from " + myPlayer.gameObject.name);
+                i = hats.Count;
                 pauseCollision(0.2f);
             }
         }
+    }
+
+    public void DestroyMyHats() 
+    {
+        if (hats.Count > 0) 
+        {
+            Destroy((hats[0].gameObject));
+            hats.Clear();
+        }
+    }
+
+    public int ScoreReport() 
+    {
+        int Score = hats.Count;
+        DestroyMyHats();
+        return Score;
     }
 
     public void pauseCollision(float time) 

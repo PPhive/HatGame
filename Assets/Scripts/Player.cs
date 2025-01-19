@@ -21,7 +21,11 @@ public class Player : MonoBehaviour
     //Current Speed
     [SerializeField]
     float currentSpeed = 90;
+    [SerializeField]
     bool currentClockwise;
+
+    [SerializeField]
+    public GameObject myScoreZone;
 
     void Start()
     {
